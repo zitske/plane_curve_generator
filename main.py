@@ -1,18 +1,19 @@
-from math import tan, radians
+
 import numpy as np
 import matplotlib.pyplot as plt
-#(Vˆ2)/11.26*tg(30)
+
+from utils import calculate_radius
+from collections import namedtuple
+
+point = namedtuple('point', ['longitude', 'latitude', 'altitude', 'velocity'])
+
 
 v = 120; # Aircraft speed in knots
 a = 30; # Curver angle in degrees
 
-def calculate_radius(v,a):
-    #v= v/1.852; #Uncoment to use km/h instead of knots on input
-    angle_in_radians = radians(a)
-    result = (v**2)/(11.26*tan(angle_in_radians));
-    result = result*0.3048; #Convert to meters
-    return result;
 
+# Example usage
+aircraft_state = point(longitude=34.0522, latitude=-118.2437, altitude=10000, velocity=120)
 
 radius = calculate_radius(v, a)
 
